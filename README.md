@@ -2,4 +2,4 @@
 
 # usage 
 
-./Bypass-403.sh https://example.com
+ python3 bypass_403.py -l targets.txt -c 30 --timeout 8 --out results.csv
